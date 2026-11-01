@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0B1329">
+  <meta name="description" content="Yulduzlar — Bo'lajak pedagoglar uchun raqamli platforma. DigCompEdu, dars ishlanmasi konstruktori, pedagogik keyslar va AI mentor.">
+  
+  <title>Yulduzlar — Bo'lajak pedagoglar uchun raqamli platforma</title>
+
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+
+  <!-- Asosiy CSS Dizayn Tizimi -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Telegram Web App SDK (Telegram ichida avtomatik moslashuv uchun) -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+  <!-- Asosiy Yuqori Panel (Header) -->
+  <header>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button class="icon-btn" id="menu-toggle-btn" aria-label="Menyuni ochish">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <div class="logo-area" onclick="App.navigateTo('home')">
+        <svg class="logo-icon" viewBox="0 0 24 24">
+          <polygon fill="#F59E0B" points="12,1.5 14.9,8.6 22.5,9.2 16.7,14.2 18.5,21.6 12,17.6 5.5,21.6 7.3,14.2 1.5,9.2 9.1,8.6"/>
+        </svg>
+        <span class="logo-text">Yulduzlar</span>
+        <span class="logo-badge">Pro 2.0</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <!-- Tungi / Kunduzgi rejim tugmasi -->
+      <button class="icon-btn" id="theme-toggle-btn" title="Mavzuni almashtirish">🌙</button>
+
+      <!-- Foydalanuvchi profil tugmasi -->
+      <div class="user-badge" id="user-profile-btn">
+        <span>👤 Talaba</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigatsiya Drawer (Yon menyu) -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <nav class="main-drawer" id="main-drawer" aria-label="Asosiy menyu">
+    <div class="drawer-header">
+      <h3>⭐ Bo'limlar</h3>
+      <p style="font-size:0.85rem; color:#94A3B8;">Raqamli pedagogika platformasi</p>
+    </div>
+    <div class="nav-links" id="drawer-nav-list">
+      <!-- App.js tomonidan dinamik chiziladi -->
+    </div>
+  </nav>
+
+  <!-- Asosiy Ilova Maydoni (Router Target) -->
+  <main id="app-content">
+    <!-- App.js tomonidan dinamik render qilinadi -->
+  </main>
+
+  <!-- Skriptlar (Tartib bilan) -->
+  <script src="data/pedagogy-data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/gamification.js"></script>
+  <script src="js/lesson-planner.js"></script>
+  <script src="js/cases-sim.js"></script>
+  <script src="js/ai-mentor.js"></script>
+  <script src="js/internship.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/portfolio.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

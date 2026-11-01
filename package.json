@@ -1,0 +1,30 @@
+{
+  "name": "yulduzlar-fullstack",
+  "version": "2.0.0",
+  "description": "Bo'lajak pedagoglar uchun raqamli platforma - Next.js Frontend + Express.js Backend + MongoDB",
+  "main": "server/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm run server\" \"npm run dev:next\"",
+    "dev:next": "next dev -p 3001",
+    "server": "node server/server.js",
+    "build": "next build",
+    "start": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm run server\" \"next start -p 3001\""
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.363.0",
+    "mongoose": "^8.3.1",
+    "next": "^14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

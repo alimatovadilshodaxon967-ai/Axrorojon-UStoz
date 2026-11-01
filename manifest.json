@@ -1,0 +1,22 @@
+{
+  "name": "Yulduzlar — Bo'lajak pedagoglar platformasi",
+  "short_name": "Yulduzlar",
+  "description": "Bo'lajak pedagoglar uchun raqamli kompetensiya va metodik rivojlanish platformasi",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0B1329",
+  "theme_color": "#0B1329",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
