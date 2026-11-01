@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Star,
   Target,
@@ -79,6 +80,7 @@ function sp(cx, cy, r) {
 }
 
 export default function HomePage() {
+  const router = useRouter();
   const [user, setUser] = useState({
     name: "Axrorjon Ustoz",
     role: "mentor",
@@ -89,16 +91,28 @@ export default function HomePage() {
   const [galaxyTooltip, setGalaxyTooltip] = useState("");
 
   useEffect(() => {
+    const hasToken = typeof document !== "undefined" && document.cookie.split("; ").some(row => row.startsWith("yz_token="));
+    if (!hasToken) {
+      router.push("/auth/login");
+      return;
+    }
+
     fetch("/api/auth/me")
       .then((r) => r.json())
       .then((d) => {
-        if (d.authenticated && d.user) setUser(d.user);
+        if (d.authenticated && d.user) {
+          setUser(d.user);
+        } else {
+          router.push("/auth/login");
+        }
       })
-      .catch(() => {});
+      .catch(() => {
+        router.push("/auth/login");
+      });
 
     const dayIndex = Math.floor(new Date().setHours(0, 0, 0, 0) / 864e5);
     setActiveTip(TIPS[dayIndex % TIPS.length]);
-  }, []);
+  }, [router]);
 
   const starsList = Array.isArray(user.stars) ? user.stars : [];
   const dn = {};

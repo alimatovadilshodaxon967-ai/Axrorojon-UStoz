@@ -61,6 +61,14 @@ export default function LoginPage() {
         throw new Error(data.error || "Email yoki parol noto‘g‘ri kiritildi");
       }
       
+      if (data.token) {
+        document.cookie = `yz_token=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
+        if (typeof window !== "undefined") {
+          localStorage.setItem("yz_token", data.token);
+          if (data.user) localStorage.setItem("yz_user", JSON.stringify(data.user));
+        }
+      }
+
       router.push("/");
       router.refresh();
     } catch (err) {
