@@ -47,9 +47,18 @@ export default function LoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
       });
-      const data = await res.json();
+      
+      const contentType = res.headers.get("content-type");
+      let data = {};
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+        throw new Error(text && text.length < 100 ? text : "Server bilan ulanishda xatolik yuz berdi. Iltimos, qayta urinib ko‘ring.");
+      }
+
       if (!res.ok) {
-        throw new Error(data.error || "Email yoki parol notöğri kiritildi");
+        throw new Error(data.error || "Email yoki parol noto‘g‘ri kiritildi");
       }
       
       router.push("/");

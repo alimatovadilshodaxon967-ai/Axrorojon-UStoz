@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001", process.env.CLIENT_URL].filter(Boolean),
+  origin: true, // Har qanday frontend domeniga (Netlify, localhost) ruxsat berish
   credentials: true
 }));
 app.use(express.json());
